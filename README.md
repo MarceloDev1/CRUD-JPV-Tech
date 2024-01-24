@@ -1,6 +1,7 @@
 # Script de criação da estrutura de dados do SQL Server
 
-CREATE TABLE [dbo].[Pessoas](
+CREATE TABLE [dbo].[Pessoas]
+(
 
 	[PessoaId] [int] IDENTITY(1,1) NOT NULL,
  
