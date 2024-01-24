@@ -1,0 +1,68 @@
+﻿@model CRUDPessoas.Models.FiltroPessoasModel
+@{
+    ViewData["Title"] = "Locadora";
+}
+<body>
+    <section class="content">
+        <section class="content-header">
+            <h4>Pessoas</h4>
+        </section>
+        <div class="box">
+            @Html.AntiForgeryToken()
+            <div class="box-body">
+                <form action="BuscarPessoa" method="post">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group">
+                                <label for="Pessoas">Nome</label>
+                                @Html.TextBoxFor(x => x.Nome, new { @class = "form-control", placeholder = "Nome" })
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group">
+                                <label for="CPF">CPF</label>
+                                @Html.TextBoxFor(x => x.CPF, new { @class = "form-control", placeholder = "CPF" })
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <label class="control-label">&nbsp;</label>
+                            <button type="submit" class="btn btn-block btn-info btn-social"><i class="fa fa-search"></i> Buscar</button>
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <label class="control-label">&nbsp;</label>
+                            <a asp-action="CadastrarPessoas" class="btn btn-block btn-info btn-social"><i class="fa fa-search"></i> Nova Pessoa</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Data de Nascimento</th>
+                        <th>Valor da Renda</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var pessoa in Model.ListaPessoas)
+                    {
+                        <tr>
+                            <td>@pessoa.Nome</td>
+                            <td>@pessoa.CPF</td>
+                            <td>@pessoa.DataNascimento.ToString("dd/MM/yyyy")</td>
+                            <td>@pessoa.ValorRenda.ToString("F2")</td>
+                            <td>
+                                <a href="/Pessoas/EditarPessoa?idPessoa=@pessoa.PessoaId" class="btn btn-primary" target="_blank">Editar</a>
+                                <a asp-action="ExcluirPessoa" asp-route-idPessoa="@pessoa.PessoaId" class="btn btn-danger">Excluir</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+</body>

@@ -1,0 +1,44 @@
+﻿@model CRUDPessoas.Models.PessoasModel
+@{
+    ViewData["Title"] = "CadastrarPessoas";
+}
+
+<!-- Adicionando JQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+</script>
+
+<h4 class="alert alert-secondary">Cadastrar Pessoa</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CadastrarPessoa" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label">Nome Completo</label>
+                <input asp-for="Nome" class="form-control" placeholder="Nome Completo" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CPF" class="control-label">CPF</label>
+                <input asp-for="CPF" class="form-control" placeholder="CPF" maxlength="11"/>
+                <span asp-validation-for="CPF" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataNascimento" class="control-label">Data de Nascimento</label>
+                <input asp-for="DataNascimento" class="form-control" />
+                <span asp-validation-for="DataNascimento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorRenda" class="control-label"></label>
+                <input asp-for="ValorRenda" class="form-control" placeholder="Valor de Renda" step="0.01" />
+                <span asp-validation-for="ValorRenda" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-outline-success btn-sm" />&emsp;
+                <a asp-action="ListarPessoas" class="btn btn-link btn-sm">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
